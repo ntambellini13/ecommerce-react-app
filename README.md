@@ -1,4 +1,7 @@
-Deployed using Heroku to https://ecomm-react-app-live.herokuapp.com/
+**Deployed using Heroku to https://ecomm-react-app-live.herokuapp.com/**
+
+
+
 
 
 
