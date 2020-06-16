@@ -9,7 +9,7 @@ import {updateCollections} from '../../redux/shop/shop.actions';
 
 import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
 
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionPage);
+const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class ShopPage extends React.Component {
