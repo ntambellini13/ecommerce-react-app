@@ -3,14 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: "AIzaSyCaVggQRh4UvL9Wuef89Nsf-XUYyhx-9n8",
-  authDomain: "ecommerce-react-app-db-2a08e.firebaseapp.com",
-  databaseURL: "https://ecommerce-react-app-db-2a08e.firebaseio.com",
-  projectId: "ecommerce-react-app-db-2a08e",
-  storageBucket: "ecommerce-react-app-db-2a08e.appspot.com",
-  messagingSenderId: "584030444518",
-  appId: "1:584030444518:web:3b0d76b7f6ebb5c4c71427",
-  measurementId: "G-W0LVPC6KW6"
+  apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
+  authDomain: 'crwn-db.firebaseapp.com',
+  databaseURL: 'https://crwn-db.firebaseio.com',
+  projectId: 'crwn-db',
+  storageBucket: 'crwn-db.appspot.com',
+  messagingSenderId: '850995411664',
+  appId: '1:850995411664:web:7ddc01d597846f65'
 };
 
 firebase.initializeApp(config);
@@ -19,11 +18,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
-  const collectionRef = firestore.collection('users');
 
   const snapShot = await userRef.get();
-  const collectionSnapshot = await collectionRef.get();
-
 
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
@@ -43,7 +39,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
   const collectionRef = firestore.collection(collectionKey);
 
   const batch = firestore.batch();
@@ -55,7 +54,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   return await batch.commit();
 };
 
-export const convertCollectionsSnapshotToMap = (collections) => {
+export const convertCollectionsSnapshotToMap = collections => {
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();
 
@@ -64,14 +63,14 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       id: doc.id,
       title,
       items
-    }
+    };
   });
 
   return transformedCollection.reduce((accumulator, collection) => {
     accumulator[collection.title.toLowerCase()] = collection;
     return accumulator;
   }, {});
-}
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
