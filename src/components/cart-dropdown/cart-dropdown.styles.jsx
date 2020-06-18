@@ -30,4 +30,3 @@ export const CartItemsContainer = styled.div`
   flex-direction: column;
   overflow: auto;
 `;
-
